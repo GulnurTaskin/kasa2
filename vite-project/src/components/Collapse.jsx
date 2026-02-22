@@ -8,10 +8,14 @@ export default function Collapse({ title, children }) {
   }
 
   return (
-    <div>
-      <button onClick={toggle}>{title}</button>
+    <div className="collapse">
+      <button className="collapse-header"  onClick={toggle}>{title}</button>
 
-      {isOpen && <div>{children}</div>}
+       {isOpen && (
+      <div className="collapse-content">
+        {children}
+      </div>
+    )}
     </div>
   );
 }

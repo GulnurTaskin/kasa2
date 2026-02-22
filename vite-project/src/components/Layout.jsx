@@ -4,10 +4,10 @@ import Footer from "./Footer.jsx";
 
 export default function Layout() {
   return (
-    <div>
+    <div className="layout">
       <Header />
 
-      <main>
+      <main className="main">
         <Outlet />
       </main>
 

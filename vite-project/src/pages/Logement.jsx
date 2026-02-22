@@ -29,21 +29,26 @@ export default function Logement() {
   }
 
   return (
-    <div>
+    <div className="logement">
       <Slideshow pictures={logement.pictures} />
+    <div className="logement-info">
       <h1>{logement.title}</h1>
       <p>{logement.location}</p>
-      <Collapse title="Description">
-        <p>{logement.description}</p>
-      </Collapse>
+    </div>
 
-      <Collapse title="Équipements">
-        <ul>
-          {logement.equipments.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      </Collapse>
+   <div className="logement-collapses">
+  <Collapse title="Description">
+    <p>{logement.description}</p>
+  </Collapse>
+
+  <Collapse title="Équipements">
+    <ul>
+      {logement.equipments.map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
+    </ul>
+  </Collapse>
+    </div>
     </div>
   );
 }

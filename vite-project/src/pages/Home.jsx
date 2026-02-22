@@ -13,10 +13,10 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+     <div className="home">
       <Banner title="Chez vous, partout et ailleurs" />
 
-      <div>
+      <div className="cards">
       {properties.map((p) => (
         <Card
           key={p.id}

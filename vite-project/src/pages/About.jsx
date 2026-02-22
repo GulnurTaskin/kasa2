@@ -2,7 +2,7 @@ import Collapse from "../components/collapse";
 import Banner from "../components/Banner";
 export default function About() {
  return (
-    <div>
+    <div className="about">
       <Banner title="À propos de Kasa" />
 
       <Collapse title="Fiabilité">

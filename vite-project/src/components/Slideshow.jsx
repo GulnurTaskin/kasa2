@@ -28,11 +28,11 @@ export default function Slideshow({ pictures }) {
   const showControls = total > 1;
 
   return (
-    <div>
-      <img src={pictures[index]} alt="Logement" width="600" />
+    <div className="slideshow">
+      <img className="slideshow-image" src={pictures[index]} alt="Logement" width="600" />
 
       {showControls && (
-        <div>
+         <div className="slideshow-controls">
           <button onClick={goPrev}>Précédent</button>
           <button onClick={goNext}>Suivant</button>
           <p>
