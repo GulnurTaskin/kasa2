@@ -24,7 +24,7 @@ export default function Logement() {
       .catch(() => navigate("/error"));
   }, [id, navigate]);
 
- if (!logement) {
+  if (!logement) {
     return <p>Chargement...</p>;
   }
 
@@ -34,16 +34,16 @@ export default function Logement() {
       <h1>{logement.title}</h1>
       <p>{logement.location}</p>
       <Collapse title="Description">
-  <p>{logement.description}</p>
-</Collapse>
+        <p>{logement.description}</p>
+      </Collapse>
 
-<Collapse title="Équipements">
-  <ul>
-    {logement.equipments.map((item, index) => (
-      <li key={index}>{item}</li>
-    ))}
-  </ul>
-</Collapse>
+      <Collapse title="Équipements">
+        <ul>
+          {logement.equipments.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </Collapse>
     </div>
   );
 }
