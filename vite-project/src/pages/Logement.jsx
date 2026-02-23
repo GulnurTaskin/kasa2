@@ -7,6 +7,7 @@ export default function Logement() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [logement, setLogement] = useState(null);
+  const [openCollapse, setOpenCollapse] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:8080/api/properties")
@@ -31,24 +32,71 @@ export default function Logement() {
   return (
     <div className="logement">
       <Slideshow pictures={logement.pictures} />
-    <div className="logement-info">
-      <h1>{logement.title}</h1>
-      <p>{logement.location}</p>
-    </div>
 
-   <div className="logement-collapses">
-  <Collapse title="Description">
+      <div className="logement-top">
+        <div className="logement-left">
+          <div className="logement-info">
+            <h1>{logement.title}</h1>
+            <p>{logement.location}</p>
+          </div>
+
+          <ul className="logement-tags">
+            {logement.tags.map((tag, index) => (
+              <li className="tag" key={index}>
+                {tag}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="logement-right">
+          <div className="logement-host">
+            <p className="host-name">{logement.host.name}</p>
+            <img
+              className="host-picture"
+              src={logement.host.picture}
+              alt={logement.host.name}
+            />
+          </div>
+
+          <div className="logement-rating">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <span
+                key={i}
+                className={i < Number(logement.rating) ? "star star-filled" : "star"}
+              >
+                ★
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="logement-collapses">
+  <Collapse
+    title="Description"
+    isOpen={openCollapse === "description"}
+    onToggle={() =>
+      setOpenCollapse(openCollapse === "description" ? null : "description")
+    }
+  >
     <p>{logement.description}</p>
   </Collapse>
 
-  <Collapse title="Équipements">
+  <Collapse
+    title="Équipements"
+    isOpen={openCollapse === "equipements"}
+    onToggle={() =>
+      setOpenCollapse(openCollapse === "equipements" ? null : "equipements")
+    }
+  >
     <ul>
       {logement.equipments.map((item, index) => (
         <li key={index}>{item}</li>
       ))}
     </ul>
   </Collapse>
-    </div>
+</div>
     </div>
   );
 }
